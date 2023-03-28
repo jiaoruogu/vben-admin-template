@@ -100,6 +100,26 @@ export const useUserStore = defineStore({
         return Promise.reject(error)
       }
     },
+    /**
+     * 这段代码是一个异步函数 afterLoginAction，其作用是在用户登录后执行一些操作，包括获取用户信息、设置会话超时、动态添加路由等。
+     * 函数的参数 goHome 是一个可选的布尔值，用于指示在完成操作后是否跳转到主页。
+     *
+     * 具体实现逻辑如下：
+     *
+     * 首先，检查是否存在 getToken 方法，如果不存在则返回 null。
+     *
+     * 调用 getUserInfoAction 方法获取用户信息，这是一个异步操作，函数会等待获取到用户信息后再执行下一步操作。
+     *
+     * 如果存在会话超时，则调用 setSessionTimeout 方法重置会话超时。
+     *
+     * 如果不存在会话超时，则调用 usePermissionStore 方法获取权限存储对象，并检查是否已经动态添加路由。
+     * 如果未添加，则调用 buildRoutesAction 方法动态构建路由，并依次将路由添加到路由器中。
+     * 最后，调用 setDynamicAddedRoute 方法将动态添加路由的状态设置为 true。
+     *
+     * 如果参数 goHome 的值为 true，则调用 router.replace 方法跳转到用户的主页。如果用户信息中未配置主页路径，则跳转到基础主页。
+     *
+     * 最后，返回用户信息。
+     */
     async afterLoginAction(goHome?: boolean): Promise<GetUserInfoModel | null> {
       if (!this.getToken) return null
       // get user info

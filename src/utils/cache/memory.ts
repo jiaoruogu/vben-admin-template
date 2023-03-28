@@ -7,6 +7,12 @@ export interface Cache<V = any> {
 
 const NOT_ALIVE = 0
 
+/**
+ * 这段代码定义了一个Memory类，用于管理缓存数据。其中，T和V分别代表存储在缓存中的数据的键值对的键和值的类型。
+ * cache是一个用于存储缓存数据的对象，它的键是T类型的键，值是Cache类型的对象。alive表示缓存数据的存活时间，以毫秒为单位。
+ * NOT_ALIVE是一个常量，表示缓存数据永远不过期。get方法用于获取指定键的缓存数据。set方法用于设置指定键的缓存数据，
+ * 并可以指定存活时间。remove方法用于移除指定键的缓存数据。resetCache方法用于重置缓存数据。clear方法用于清空缓存数据。
+ */
 export class Memory<T = any, V = any> {
   private cache: { [key in keyof T]?: Cache<V> } = {}
   private alive: number

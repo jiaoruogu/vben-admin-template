@@ -3,6 +3,7 @@ import { createStorage as create, CreateStorageParams } from './storageCache'
 import { enableStorageEncryption } from '/@/settings/encryptionSetting'
 import { DEFAULT_CACHE_TIME } from '/@/settings/encryptionSetting'
 
+// Partial 可以快速把某个接口类型中定义的所有属性变成可选的。
 export type Options = Partial<CreateStorageParams>
 
 const createOptions = (storage: Storage, options: Options = {}): Options => {

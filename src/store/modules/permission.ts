@@ -115,6 +115,7 @@ export const usePermissionStore = defineStore({
       const appStore = useAppStoreWithOut()
 
       let routes: AppRouteRecordRaw[] = []
+      // toRaw 根据一个 Vue 创建的代理返回其原始对象。
       const roleList = toRaw(userStore.getRoleList) || []
       const { permissionMode = projectSetting.permissionMode } = appStore.getProjectConfig
 
