@@ -51,6 +51,20 @@ export class Persistent {
     return localMemory.get(key)?.value as Nullable<T>
   }
 
+  /**
+   *
+   * 这段代码是一个静态方法，用于将一个值存储在本地缓存中。它接受三个参数：
+   *
+   * key：缓存的键名，类型为 LocalKeys，是一个枚举值，用于标识不同的缓存项；
+   * value：要存储的值，类型为 LocalStore[LocalKeys]，是一个泛型类型，根据 key 的不同可以存储不同类型的值；
+   * immediate：一个可选的布尔值，表示是否立即将缓存内容存储到本地存储中。
+   * 该方法首先将 value 转换为原始值，然后将其存储在 localMemory 对象中。localMemory 是一个 Memory 类的实例，
+   * 用于管理本地缓存。set 方法是 Memory 类中的一个方法，用于设置缓存。
+   * 在这里，key 就是 Memory 类中的泛型类型 T 的一个属性名，value 则是 Memory 类中泛型类型 V 的值。
+   *
+   * 最后，如果 immediate 参数为 true，则调用了 ls.set 方法将缓存内容存储到本地存储中
+   * ls 是一个封装了浏览器本地存储 API 的工具对象，APP_LOCAL_CACHE_KEY 是一个常量，表示本地缓存的键名。
+   */
   static setLocal(key: LocalKeys, value: LocalStore[LocalKeys], immediate = false): void {
     localMemory.set(key, toRaw(value))
     immediate && ls.set(APP_LOCAL_CACHE_KEY, localMemory.getCache)
