@@ -1,5 +1,5 @@
-const validColors = ['primary', 'error', 'warning', 'success', ''] as const;
-type ButtonColorType = typeof validColors[number];
+const validColors = ['primary', 'error', 'warning', 'success', ''] as const
+type ButtonColorType = typeof validColors[number]
 
 export const buttonProps = {
   color: {
@@ -23,4 +23,4 @@ export const buttonProps = {
    */
   iconSize: { type: Number, default: 14 },
   onClick: { type: Function as PropType<(...args) => any>, default: null },
-};
+}

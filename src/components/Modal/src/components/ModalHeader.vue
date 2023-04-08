@@ -4,9 +4,9 @@
   </BasicTitle>
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import { defineComponent } from 'vue';
-  import { BasicTitle } from '/@/components/Basic';
+  import type { PropType } from 'vue'
+  import { defineComponent } from 'vue'
+  import { BasicTitle } from '/@/components/Basic'
 
   export default defineComponent({
     name: 'BasicModalHeader',
@@ -17,5 +17,5 @@
       },
       title: { type: String },
     },
-  });
+  })
 </script>

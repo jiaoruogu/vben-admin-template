@@ -11,15 +11,15 @@
   </div>
 </template>
 <script lang="ts">
-  import type { PropType } from 'vue';
-  import type { TableSetting, ColumnChangeParam } from '../../types/table';
-  import { defineComponent, computed, unref } from 'vue';
-  import ColumnSetting from './ColumnSetting.vue';
-  import SizeSetting from './SizeSetting.vue';
-  import RedoSetting from './RedoSetting.vue';
-  import FullScreenSetting from './FullScreenSetting.vue';
-  import { useI18n } from '/@/hooks/web/useI18n';
-  import { useTableContext } from '../../hooks/useTableContext';
+  import type { PropType } from 'vue'
+  import type { TableSetting, ColumnChangeParam } from '../../types/table'
+  import { defineComponent, computed, unref } from 'vue'
+  import ColumnSetting from './ColumnSetting.vue'
+  import SizeSetting from './SizeSetting.vue'
+  import RedoSetting from './RedoSetting.vue'
+  import FullScreenSetting from './FullScreenSetting.vue'
+  import { useI18n } from '/@/hooks/web/useI18n'
+  import { useTableContext } from '../../hooks/useTableContext'
 
   export default defineComponent({
     name: 'TableSetting',
@@ -37,8 +37,8 @@
     },
     emits: ['columns-change'],
     setup(props, { emit }) {
-      const { t } = useI18n();
-      const table = useTableContext();
+      const { t } = useI18n()
+      const table = useTableContext()
 
       const getSetting = computed((): TableSetting => {
         return {
@@ -47,20 +47,20 @@
           setting: true,
           fullScreen: false,
           ...props.setting,
-        };
-      });
+        }
+      })
 
       function handleColumnChange(data: ColumnChangeParam[]) {
-        emit('columns-change', data);
+        emit('columns-change', data)
       }
 
       function getTableContainer() {
-        return table ? unref(table.wrapRef) : document.body;
+        return table ? unref(table.wrapRef) : document.body
       }
 
-      return { getSetting, t, handleColumnChange, getTableContainer };
+      return { getSetting, t, handleColumnChange, getTableContainer }
     },
-  });
+  })
 </script>
 <style lang="less">
   .table-settings {
