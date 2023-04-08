@@ -61,7 +61,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       proxy: createProxy(VITE_PROXY),
     },
     esbuild: {
-      pure: VITE_DROP_CONSOLE ? ['console.log', 'debugger'] : [],
+      drop: VITE_DROP_CONSOLE ? ['console', 'debugger'] : [],
     },
     build: {
       target: 'es2015',
@@ -79,7 +79,9 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       //   },
       // },
       // Turning off brotliSize display can slightly reduce packaging time
-      brotliSize: false,
+      // 启用/禁用 gzip 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
+      reportCompressedSize: false,
+      // 规定触发警告的 chunk 大小。（以 kbs 为单位）。它将与未压缩的 chunk 大小进行比较，因为 JavaScript 大小本身与执行时间相关。
       chunkSizeWarningLimit: 2000,
     },
     define: {
