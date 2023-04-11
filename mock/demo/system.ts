@@ -37,10 +37,10 @@ const roleList = (() => {
 
 const deptList = (() => {
   const result: any[] = []
-  for (let index = 0; index < 3; index++) {
+  for (let index = 0; index < 30; index++) {
     result.push({
       id: `${index}`,
-      deptName: ['华东分部', '华南分部', '西北分部'][index],
+      deptName: '@string(3,6)',
       orderNo: index + 1,
       createTime: '@datetime',
       remark: '@cword(10,20)',
