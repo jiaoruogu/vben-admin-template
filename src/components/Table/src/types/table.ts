@@ -14,6 +14,7 @@ export interface TableCurrentDataSource<T = Recordable> {
   currentDataSource: T[];
 }
 
+// @ts-ignore
 export interface TableRowSelection<T = any> extends ITableRowSelection {
   /**
    * Callback executed when selected rows change

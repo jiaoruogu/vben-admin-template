@@ -13,6 +13,7 @@ export interface ComponentProps {
   getPopupContainer?: Fn;
 }
 
+// @ts-ignore
 export const CellComponent: FunctionalComponent = (
   {
     component = 'Input',
@@ -25,6 +26,7 @@ export const CellComponent: FunctionalComponent = (
 ) => {
   const Comp = componentMap.get(component) as typeof defineComponent;
 
+  // @ts-ignore
   const DefaultComp = h(Comp, attrs);
   if (!rule) {
     return DefaultComp;

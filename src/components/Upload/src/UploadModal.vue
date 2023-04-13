@@ -84,7 +84,7 @@
 
       const { t } = useI18n();
       const [register, { closeModal }] = useModalInner();
-
+      // @ts-ignore
       const { getStringAccept, getHelpText } = useUploadType({
         acceptRef: accept,
         helpTextRef: helpText,

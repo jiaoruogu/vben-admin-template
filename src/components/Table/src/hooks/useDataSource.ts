@@ -349,6 +349,7 @@ export function useDataSource(
   }
 
   function setTableData<T = Recordable>(values: T[]) {
+    // @ts-ignore
     dataSourceRef.value = values;
   }
 
